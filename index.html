@@ -981,33 +981,40 @@
       font-weight: 700;
       color: var(--gray);
       letter-spacing: 0.12em;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+      text-align: center;
     }
 
     .media-logos {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 0;
       justify-content: center;
+      align-items: center;
     }
 
     .media-logo {
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 18px;
-      font-size: 13px;
-      color: var(--text);
-      font-family: var(--mono);
-      font-weight: 600;
+      font-size: 14px;
+      color: #AAA;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 700;
       text-decoration: none;
-      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+      padding: 6px 20px;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+      position: relative;
     }
-    a.media-logo:hover {
-      border-color: var(--orange);
-      color: var(--orange);
-      box-shadow: 0 2px 8px rgba(255,163,0,0.15);
+    .media-logo + .media-logo::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 14px;
+      background: var(--border);
     }
+    a.media-logo:hover { color: var(--orange); }
 
     /* ══════════════════════════════════
        SECTION 11: FAQ
