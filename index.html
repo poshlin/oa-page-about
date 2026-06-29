@@ -988,33 +988,30 @@
     .media-logos {
       display: flex;
       flex-wrap: wrap;
-      gap: 0;
+      gap: 10px;
       justify-content: center;
       align-items: center;
     }
 
     .media-logo {
-      font-size: 14px;
-      color: #AAA;
+      font-size: 13px;
       font-family: 'Noto Sans TC', sans-serif;
       font-weight: 700;
       text-decoration: none;
-      padding: 6px 20px;
-      transition: color 0.2s;
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1.5px solid;
       letter-spacing: 0.02em;
-      position: relative;
+      transition: transform 0.18s, box-shadow 0.18s;
+      display: inline-block;
     }
-    .media-logo + .media-logo::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 14px;
-      background: var(--border);
+    a.media-logo:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
     }
-    a.media-logo:hover { color: var(--orange); }
+    .media-logo.mc-orange { background: #FFF8E8; border-color: #FFD270; color: #CC8200; }
+    .media-logo.mc-teal   { background: #E6FAF8; border-color: #7ADBD4; color: #008A7E; }
+    .media-logo.mc-coral  { background: #FFF0EE; border-color: #FFBAB5; color: #D94F44; }
 
     /* ══════════════════════════════════
        SECTION 11: FAQ
@@ -1510,16 +1507,16 @@
 
       <div class="media-label">// MEDIA_COVERAGE</div>
       <div class="media-logos">
-        <a class="media-logo" href="https://www.parenting.com.tw/article/5086308-/" target="_blank" rel="noopener">親子天下</a>
-        <a class="media-logo" href="https://news.tvbs.com.tw/life/925303" target="_blank" rel="noopener">TVBS</a>
-        <a class="media-logo" href="https://www.youtube.com/watch?v=asDSyEVBFuA" target="_blank" rel="noopener">中天電視</a>
-        <a class="media-logo" href="https://www.businesstoday.com.tw/article/category/80409/post/201805040020/" target="_blank" rel="noopener">今周刊</a>
-        <a class="media-logo" href="https://news.cnyes.com/news/id/4519185" target="_blank" rel="noopener">鉅亨網</a>
-        <a class="media-logo" href="https://futureparenting.cwgv.com.tw/family/content/index/11569" target="_blank" rel="noopener">未來 Family</a>
-        <a class="media-logo" href="https://www.techbang.com/posts/47216-orangeapple" target="_blank" rel="noopener">T 客邦</a>
-        <a class="media-logo" href="https://www.inside.com.tw/article/12969-11-year-old-boy-coding-spread-to-mit" target="_blank" rel="noopener">Inside</a>
-        <a class="media-logo" href="https://buzzorange.com/techorange/2017/08/14/9-years-old-boy-for-tw-to-scratch-china/" target="_blank" rel="noopener">科技報橘</a>
-        <a class="media-logo" href="https://www.storm.mg/lifestyle/435658" target="_blank" rel="noopener">風傳媒</a>
+        <a class="media-logo mc-orange" href="https://www.parenting.com.tw/article/5086308-/" target="_blank" rel="noopener">親子天下</a>
+        <a class="media-logo mc-teal" href="https://news.tvbs.com.tw/life/925303" target="_blank" rel="noopener">TVBS</a>
+        <a class="media-logo mc-coral" href="https://www.youtube.com/watch?v=asDSyEVBFuA" target="_blank" rel="noopener">中天電視</a>
+        <a class="media-logo mc-orange" href="https://www.businesstoday.com.tw/article/category/80409/post/201805040020/" target="_blank" rel="noopener">今周刊</a>
+        <a class="media-logo mc-teal" href="https://news.cnyes.com/news/id/4519185" target="_blank" rel="noopener">鉅亨網</a>
+        <a class="media-logo mc-coral" href="https://futureparenting.cwgv.com.tw/family/content/index/11569" target="_blank" rel="noopener">未來 Family</a>
+        <a class="media-logo mc-orange" href="https://www.techbang.com/posts/47216-orangeapple" target="_blank" rel="noopener">T 客邦</a>
+        <a class="media-logo mc-teal" href="https://www.inside.com.tw/article/12969-11-year-old-boy-coding-spread-to-mit" target="_blank" rel="noopener">Inside</a>
+        <a class="media-logo mc-coral" href="https://buzzorange.com/techorange/2017/08/14/9-years-old-boy-for-tw-to-scratch-china/" target="_blank" rel="noopener">科技報橘</a>
+        <a class="media-logo mc-orange" href="https://www.storm.mg/lifestyle/435658" target="_blank" rel="noopener">風傳媒</a>
       </div>
     </div>
   </section>
