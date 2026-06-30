@@ -854,7 +854,7 @@
     .loc-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
     /* ══════════════════════════════════
-       SECTION 9: TIMELINE (程式碼背景)
+       SECTION 9: TIMELINE — 垂直版
     ══════════════════════════════════ */
     .timeline {
       background: var(--light);
@@ -862,50 +862,51 @@
       position: relative;
       overflow: hidden;
     }
-
-    .timeline-header { margin-bottom: 56px; }
-
-    .tl-scroll {
-      overflow-x: auto;
-      padding: 0 28px 24px;
-      -webkit-overflow-scrolling: touch;
-    }
+    .timeline-header { margin-bottom: 48px; }
+    .tl-scroll { padding: 0; }
 
     .tl-track {
       display: flex;
-      min-width: max-content;
+      flex-direction: column;
       position: relative;
-      padding-top: 8px;
-      padding-bottom: 32px;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4px 0 4px 0;
     }
 
+    /* 垂直軸線 */
     .tl-track::before {
       content: '';
       position: absolute;
-      top: 34px;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--orange) 5%, var(--orange) 95%, transparent);
+      top: 8px;
+      bottom: 8px;
+      left: 68px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--orange) 4%, var(--orange) 96%, transparent);
       z-index: 0;
     }
 
     .tl-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 192px;
-      flex-shrink: 0;
+      display: grid;
+      grid-template-columns: 60px 16px 1fr;
+      gap: 0 20px;
+      align-items: flex-start;
       position: relative;
+      padding-bottom: 28px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.48s ease, transform 0.48s ease;
     }
+    .tl-item.tl-visible { opacity: 1; transform: translateY(0); }
 
     .tl-year {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--orange);
-      margin-bottom: 14px;
       letter-spacing: 0.06em;
+      text-align: right;
+      padding-top: 3px;
     }
 
     .tl-dot {
@@ -916,19 +917,18 @@
       border: 2px solid var(--light);
       box-shadow: 0 0 0 2px var(--orange);
       z-index: 1;
-      margin-bottom: 18px;
+      margin: 2px 0 0 2px;
       flex-shrink: 0;
     }
 
     .tl-card {
       background: #fff;
       border-radius: 10px;
-      padding: 14px 14px;
+      padding: 12px 16px;
       font-size: 13px;
       line-height: 1.6;
       color: var(--text);
-      width: 172px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
 
     .tl-card strong {
@@ -937,7 +937,7 @@
       font-size: 11px;
       color: var(--orange);
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
       letter-spacing: 0.04em;
     }
 
@@ -950,42 +950,52 @@
     .tl-item.now strong { color: var(--teal-dark); }
 
     /* ══════════════════════════════════
-       SECTION 10: MEDIA & AWARDS
+       SECTION 10A: AWARDS（深色獎牆）
     ══════════════════════════════════ */
-    .media-awards {
-      background: #fff;
+    .awards-wall {
+      background: linear-gradient(140deg, #0F0800 0%, #001A17 100%);
       padding: 96px 0;
     }
+    .awards-wall .tag {
+      background: rgba(255,163,0,0.12);
+      color: rgba(255,163,0,0.85);
+    }
+    .awards-wall h2 { color: #fff; margin-bottom: 48px; }
 
     .awards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-bottom: 52px;
+      margin-bottom: 0;
     }
 
     .award-card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,163,0,0.18);
+      border-radius: 14px;
+      padding: 24px 20px;
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      transition: box-shadow 0.2s;
+      transition: border-color 0.22s, box-shadow 0.22s, background 0.22s;
       text-decoration: none;
       color: inherit;
     }
-    .award-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.10); border-color: var(--orange); }
+    .award-card:hover {
+      border-color: rgba(255,163,0,0.55);
+      background: rgba(255,163,0,0.07);
+      box-shadow: 0 0 28px rgba(255,163,0,0.1);
+    }
 
     .award-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--orange-light);
-      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      background: rgba(255,163,0,0.1);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 19px;
       flex-shrink: 0;
     }
 
@@ -993,15 +1003,24 @@
       display: block;
       font-size: 14px;
       font-weight: 900;
-      color: var(--text);
-      margin-bottom: 2px;
+      color: #fff;
+      margin-bottom: 5px;
       line-height: 1.4;
     }
 
     .award-text span {
       font-size: 12px;
-      color: var(--gray);
+      color: rgba(255,163,0,0.65);
       font-family: var(--mono);
+      letter-spacing: 0.06em;
+    }
+
+    /* ══════════════════════════════════
+       SECTION 10B: MEDIA COVERAGE
+    ══════════════════════════════════ */
+    .media-coverage {
+      background: #fff;
+      padding: 64px 0;
     }
 
     .media-label {
@@ -1501,30 +1520,31 @@
     </div>
 
     <div class="tl-scroll">
+      <div class="container">
       <div class="tl-track">
         <div class="tl-item"><div class="tl-year">2011</div><div class="tl-dot"></div><div class="tl-card"><strong>// 社會公益</strong>獲台北市政府教育局認助清寒學生基金會 20 週年感謝，持續認助清寒學生至今</div></div>
         <div class="tl-item"><div class="tl-year">2012</div><div class="tl-dot"></div><div class="tl-card"><strong>// 品牌創立</strong>採用 MIT 教材，開始服務國小、國中學生</div></div>
         <div class="tl-item"><div class="tl-year">2014</div><div class="tl-dot"></div><div class="tl-card"><strong>// 高中合作</strong>與建中合辦 TWCL 社團，帶領高中生設計創新專案</div></div>
-        <div class="tl-item"><div class="tl-year">2016</div><div class="tl-dot"></div><div class="tl-card"><strong>// 雙項大獎</strong>親子天下【教育創新100選】& 遠見【未來教育 臺灣100】</div></div>
-        <div class="tl-item"><div class="tl-year">2017</div><div class="tl-dot"></div><div class="tl-card"><strong>// APCS 滿級分</strong>國中學員 APCS 大學程式設計先修檢測滿級分</div></div>
+        <div class="tl-item"><div class="tl-year">2017</div><div class="tl-dot"></div><div class="tl-card"><strong>// 三項大獎</strong>親子天下【教育創新100選】、遠見【未來教育 臺灣100】；國中學員 APCS 滿級分</div></div>
         <div class="tl-item"><div class="tl-year">2018</div><div class="tl-dot"></div><div class="tl-card"><strong>// MIT 首頁</strong>學生作品連續三次登上 MIT Scratch 官網首頁</div></div>
-        <div class="tl-item"><div class="tl-year">2019</div><div class="tl-dot"></div><div class="tl-card"><strong>// 國際考場</strong>MIT App Inventor & 微軟 MTA 官方認證考場</div></div>
-        <div class="tl-item"><div class="tl-year">2020</div><div class="tl-dot"></div><div class="tl-card"><strong>// 清大錄取</strong>學生以 APCS 9 級分錄取清大資工；全台 210 所學校採用教材</div></div>
+        <div class="tl-item"><div class="tl-year">2019</div><div class="tl-dot"></div><div class="tl-card"><strong>// 國際考場</strong>成為微軟 MTA 官方認證考場</div></div>
+        <div class="tl-item"><div class="tl-year">2020</div><div class="tl-dot"></div><div class="tl-card"><strong>// 清大錄取 · 新創領袖</strong>學生 APCS 9 級分錄取清大資工；全台 210 所學校採用教材；獲親子天下【教育新創 20+】領袖肯定</div></div>
         <div class="tl-item"><div class="tl-year">2021</div><div class="tl-dot"></div><div class="tl-card"><strong>// 全商金舶獎</strong>持續認助「拾穗計劃」；榮獲全商金舶獎</div></div>
         <div class="tl-item"><div class="tl-year">2022</div><div class="tl-dot"></div><div class="tl-card"><strong>// 金塾獎</strong>獲頒「2022 金塾新興科技組秀才」</div></div>
-        <div class="tl-item"><div class="tl-year">2023</div><div class="tl-dot"></div><div class="tl-card"><strong>// HolonIQ</strong>HolonIQ 2023 Taiwan EdTech 50 優秀台灣教育科技企業</div></div>
+        <div class="tl-item"><div class="tl-year">2023</div><div class="tl-dot"></div><div class="tl-card"><strong>// HolonIQ · 選手班</strong>HolonIQ 2023 Taiwan EdTech 50；8 月創立橘蘋選手班（國高中競賽培訓專班）</div></div>
+        <div class="tl-item"><div class="tl-year">2024</div><div class="tl-dot"></div><div class="tl-card"><strong>// ITS 全球認證</strong>9 月推出 ITS 全球認證班（Pearson Vue 主辦）：Python · JavaScript · HTML&amp;CSS · 運算思維</div></div>
         <div class="tl-item"><div class="tl-year">2026</div><div class="tl-dot"></div><div class="tl-card"><strong>// 海外拓展</strong>馬來西亞吉隆坡教室正式開業，橘子蘋果走出台灣</div></div>
         <div class="tl-item now"><div class="tl-year">NOW</div><div class="tl-dot"></div><div class="tl-card"><strong>// 持續前進</strong>10萬+學生 · 14年 · 台灣＋馬來西亞</div></div>
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ MEDIA & AWARDS ══ -->
-  <section class="media-awards" aria-label="媒體報導與品牌獎項">
+  <!-- ══ AWARDS WALL ══ -->
+  <section class="awards-wall" aria-label="品牌獎項肯定">
     <div class="container">
       <span class="tag">// recognition</span>
-      <h2 style="margin-bottom:44px;">獲各大媒體<br>與機構肯定</h2>
-
+      <h2>獲各大媒體<br>與機構肯定</h2>
       <div class="awards-grid">
         <a class="award-card" href="https://tw100-2017.cwgv.org.tw/" target="_blank" rel="noopener"><div class="award-icon">🌟</div><div class="award-text"><strong>遠見 未來教育 臺灣 100</strong><span>2017</span></div></a>
         <a class="award-card" href="https://edustartup.parenting.com.tw/partner/20" target="_blank" rel="noopener"><div class="award-icon">🚀</div><div class="award-text"><strong>親子天下 教育新創 20+</strong><span>2020</span></div></a>
@@ -1532,8 +1552,12 @@
         <a class="award-card" href="https://www.ctee.com.tw/news/20221220700370-431202" target="_blank" rel="noopener"><div class="award-icon">💡</div><div class="award-text"><strong>金塾新興科技組秀才</strong><span>2022</span></div></a>
         <div class="award-card"><div class="award-icon">🌏</div><div class="award-text"><strong>HolonIQ Taiwan EdTech 50</strong><span>2023</span></div></div>
       </div>
-      </div>
+    </div>
+  </section>
 
+  <!-- ══ MEDIA COVERAGE ══ -->
+  <section class="media-coverage" aria-label="媒體報導">
+    <div class="container">
       <div class="media-label">// MEDIA_COVERAGE</div>
       <div class="media-logos">
         <a class="media-logo mc-orange" href="https://www.parenting.com.tw/article/5086308-/" target="_blank" rel="noopener">親子天下</a>
@@ -1794,6 +1818,26 @@
     }
   })();
   </script>
+
+<script>
+// ── 垂直 Timeline scroll-triggered 淡入 ──
+(function() {
+  const items = document.querySelectorAll('.tl-item');
+  if (!items.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('tl-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.06) + 's';
+    obs.observe(el);
+  });
+})();
+</script>
 
 <script>
 (function() {
