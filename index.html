@@ -656,7 +656,7 @@
        SECTION A: TEACHER (< 30%)
     ══════════════════════════════════ */
     .teacher {
-      background: var(--dark);
+      background: linear-gradient(140deg, #130900 0%, #001A17 100%);
       padding: 0;
       position: relative;
       overflow: hidden;
@@ -762,9 +762,37 @@
       font-size: 13px;
       color: rgba(255,255,255,0.35);
       line-height: 1.7;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 24px;
       font-family: var(--mono);
+    }
+
+    /* ── Teacher animations ── */
+    .teacher-big { transition: none; }
+    .teacher-big.counting { color: var(--orange); }
+
+    .teacher-step {
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .teacher-step.step-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .teacher-step:nth-child(1) { transition-delay: 0.05s; }
+    .teacher-step:nth-child(2) { transition-delay: 0.18s; }
+    .teacher-step:nth-child(3) { transition-delay: 0.31s; }
+    .teacher-step:nth-child(4) { transition-delay: 0.44s; }
+
+    .teacher-note {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s;
+    }
+    .teacher-note.note-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ══════════════════════════════════
@@ -1356,8 +1384,8 @@
             <span>if(pass_all) {</span><span>return hired</span><span>reject()</span><span>screen()</span><span>test()</span><span>train()</span>
           </div>
           <div style="text-align:center; position:relative; z-index:2;">
-            <div class="teacher-big">
-              <span class="lt">&lt;</span>30<span class="pct">%</span>
+            <div class="teacher-big" id="teacher-big">
+              <span class="lt">&lt;</span><span id="teacher-count">30</span><span class="pct">%</span>
             </div>
             <div class="teacher-label">// teacher_acceptance_rate</div>
           </div>
@@ -1766,5 +1794,39 @@
     }
   })();
   </script>
+
+<script>
+(function() {
+  const section = document.querySelector('.teacher');
+  const countEl = document.getElementById('teacher-count');
+  const steps   = document.querySelectorAll('.teacher-step');
+  const note    = document.querySelector('.teacher-note');
+  let fired = false;
+
+  const obs = new IntersectionObserver(entries => {
+    if (fired || !entries[0].isIntersecting) return;
+    fired = true;
+    obs.disconnect();
+
+    // 數字倒數：100 → 30，時長 900ms
+    const start = 100, end = 30, dur = 900;
+    const t0 = performance.now();
+    function tick(now) {
+      const p = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      countEl.textContent = Math.round(start - (start - end) * ease);
+      if (p < 1) requestAnimationFrame(tick);
+      else countEl.textContent = end;
+    }
+    requestAnimationFrame(tick);
+
+    // 步驟依序滑入
+    steps.forEach(s => s.classList.add('step-visible'));
+    if (note) note.classList.add('note-visible');
+  }, { threshold: 0.3 });
+
+  if (section) obs.observe(section);
+})();
+</script>
 </body>
 </html>
