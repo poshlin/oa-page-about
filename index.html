@@ -2264,7 +2264,7 @@
   });
 })();
 
-/* ── Reviews Carousel ── */
+/* ── Reviews Carousel (infinite loop) ── */
 (function(){
   const track = document.getElementById('reviewsTrack');
   const prev  = document.getElementById('reviewsPrev');
@@ -2272,57 +2272,108 @@
   const dotsWrap = document.getElementById('reviewsDots');
   if (!track) return;
 
-  const cards = track.querySelectorAll('.review-card');
-  const total = cards.length;
-  let current = 0;
+  const origCards = Array.from(track.querySelectorAll('.review-card'));
+  const total = origCards.length;
 
-  // build dots
+  // clone before + after for infinite feel
+  origCards.forEach(c => track.appendChild(c.cloneNode(true)));
+  origCards.forEach(c => track.prepend(c.cloneNode(true)));
+
+  const allCards = Array.from(track.querySelectorAll('.review-card'));
+  let current = total; // start at first real card (after clones)
+  let jumping = false;
+
+  // build dots (only total real cards)
   const dots = [];
-  cards.forEach((_, i) => {
+  for (let i = 0; i < total; i++) {
     const d = document.createElement('div');
     d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.addEventListener('click', () => goTo(i));
+    d.addEventListener('click', () => goTo(i + total));
     dotsWrap.appendChild(d);
     dots.push(d);
-  });
+  }
+
+  function updateDots(idx) {
+    const real = ((idx % total) + total) % total;
+    dots.forEach((d, i) => d.classList.toggle('active', i === real));
+  }
+
+  function scrollToIdx(idx, smooth) {
+    const card = allCards[idx];
+    if (!card) return;
+    track.scrollTo({ left: card.offsetLeft, behavior: smooth ? 'smooth' : 'instant' });
+  }
 
   function goTo(idx) {
-    current = Math.max(0, Math.min(idx, total - 1));
-    const card = cards[current];
-    track.scrollTo({ left: card.offsetLeft - 20, behavior: 'smooth' });
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    current = idx;
+    scrollToIdx(current, true);
+    updateDots(current);
   }
+
+  // after smooth scroll ends, silently jump to real position
+  track.addEventListener('scrollend', () => {
+    if (jumping) return;
+    if (current < total) {
+      jumping = true;
+      current += total;
+      scrollToIdx(current, false);
+      jumping = false;
+    } else if (current >= total * 2) {
+      jumping = true;
+      current -= total;
+      scrollToIdx(current, false);
+      jumping = false;
+    }
+  });
+
+  // fallback for browsers without scrollend
+  let scrollTimer;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      if (jumping) return;
+      // find closest card
+      let closest = current, minDist = Infinity;
+      allCards.forEach((c, i) => {
+        const dist = Math.abs(c.offsetLeft - track.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      current = closest;
+      updateDots(current);
+      // jump if in clone zone
+      if (current < total) {
+        jumping = true;
+        current += total;
+        scrollToIdx(current, false);
+        jumping = false;
+      } else if (current >= total * 2) {
+        jumping = true;
+        current -= total;
+        scrollToIdx(current, false);
+        jumping = false;
+      }
+    }, 80);
+  }, { passive: true });
 
   prev.addEventListener('click', () => goTo(current - 1));
   next.addEventListener('click', () => goTo(current + 1));
 
-  // sync dots on scroll
-  track.addEventListener('scroll', () => {
-    let closest = 0, minDist = Infinity;
-    cards.forEach((c, i) => {
-      const dist = Math.abs(c.offsetLeft - track.scrollLeft - 20);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    if (closest !== current) {
-      current = closest;
-      dots.forEach((d, i) => d.classList.toggle('active', i === current));
-    }
-  }, { passive: true });
+  // init position (no animation)
+  scrollToIdx(current, false);
 
   // drag to scroll
-  let isDown = false, startX, scrollLeft;
+  let isDown = false, startX, startScroll;
   track.addEventListener('mousedown', e => {
     isDown = true; track.classList.add('grabbing');
     startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
+    startScroll = track.scrollLeft;
   });
   track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('grabbing'); });
   track.addEventListener('mouseup',    () => { isDown = false; track.classList.remove('grabbing'); });
   track.addEventListener('mousemove',  e => {
     if (!isDown) return;
     e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    track.scrollLeft = startScroll - (e.pageX - track.offsetLeft - startX) * 1.5;
   });
 })();
 </script>
