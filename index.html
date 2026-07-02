@@ -1532,7 +1532,7 @@
             <span class="hero-badge-label">累計服務學生</span>
           </div>
           <div class="hero-badge b2" aria-hidden="true">
-            <span class="hero-badge-num">14年</span>
+            <span class="hero-badge-num"><span class="oa-years"></span>年</span>
             <span class="hero-badge-label">深耕程式教育</span>
           </div>
         </div>
@@ -1547,7 +1547,7 @@
         <p>
           <strong class="oa-brand">橘子蘋果程式學苑</strong>成立於 <strong>2012 年</strong>，是台灣規模最大的兒童程式教育機構之一。<br>
           提供從 <span class="intro-code">Scratch</span> 到 <span class="intro-code">AI</span> 的完整課程體系，服務遍及全台 <strong>12 個縣市</strong>，<br>
-          累計超過 <strong>10 萬名學生</strong>、<strong>500 位以上資深師資</strong>，兒童程式教育經驗逾 <strong>14 年</strong>。<br><br>
+          累計超過 <strong>10 萬名學生</strong>、<strong>500 位以上資深師資</strong>，兒童程式教育經驗逾 <strong><span class="oa-years"></span> 年</strong>。<br><br>
           我們相信：程式教育的核心，不是學會一種語言，<br>
           而是學會一種思考方式——<strong class="oa-brand">用邏輯解決問題，用創造面向未來</strong>。
         </p>
@@ -1832,7 +1832,7 @@
     <div class="container">
       <div class="timeline-header">
         <span class="tag">// milestones</span>
-        <h2>14 年，一步一腳印</h2>
+        <h2><span class="oa-years"></span> 年，一步一腳印</h2>
       </div>
     </div>
 
@@ -1851,7 +1851,7 @@
         <div class="tl-item"><div class="tl-year">2024</div><div class="tl-dot"></div><div class="tl-card"><strong>// ITS 全球認證</strong>9 月成為 ITS 全球認證官方考場（Pearson Vue 主辦），首發 Python 認證班</div></div>
         <div class="tl-item"><div class="tl-year">2025</div><div class="tl-dot"></div><div class="tl-card"><strong>// ITS 擴科</strong>1 月加入 JavaScript；3 月加入運算思維，認證科目持續擴充</div></div>
         <div class="tl-item"><div class="tl-year">2026</div><div class="tl-dot"></div><div class="tl-card"><strong>// 海外拓展 · HTML&amp;CSS</strong>4 月新增 HTML&amp;CSS 認證班；馬來西亞吉隆坡教室正式開業，橘子蘋果走出台灣</div></div>
-        <div class="tl-item now"><div class="tl-year">NOW</div><div class="tl-dot"></div><div class="tl-card"><strong>// 持續前進</strong>10萬+學生 · 14年 · 台灣＋馬來西亞</div></div>
+        <div class="tl-item now"><div class="tl-year">NOW</div><div class="tl-dot"></div><div class="tl-card"><strong>// 持續前進</strong>10萬+學生 · <span class="oa-years"></span>年 · 台灣＋馬來西亞</div></div>
       </div>
       </div>
     </div>
@@ -1982,7 +1982,7 @@
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-a">
-              橘子蘋果程式學苑成立於 2012 年，是台灣規模最大的兒童程式教育機構之一。提供從 Scratch 到 AI 的完整課程體系，服務遍及全台 12 縣市，累計超過 10 萬名學生、500 位以上資深師資，兒童程式教育經驗逾 14 年。
+              橘子蘋果程式學苑成立於 2012 年，是台灣規模最大的兒童程式教育機構之一。提供從 Scratch 到 AI 的完整課程體系，服務遍及全台 12 縣市，累計超過 10 萬名學生、500 位以上資深師資，兒童程式教育經驗逾 <span class="oa-years"></span> 年。
             </div>
           </div>
           <div class="faq-item">
@@ -2021,7 +2021,7 @@
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-a">
-              成立於 2012 年，至今已有 14 年兒童程式教育經驗。<a href="https://orangeapple.co/classroom" style="color:var(--orange);font-weight:700;text-decoration:underline;">全台 12 縣市均有教學據點</a>（台北、新北、基隆、桃園、新竹縣、新竹市、苗栗、台中、嘉義、台南、高雄、屏東），累計超過 10 萬名學生、500 位以上資深師資，學習時數超過五百萬小時。
+              成立於 2012 年，至今已有 <span class="oa-years"></span> 年兒童程式教育經驗。<a href="https://orangeapple.co/classroom" style="color:var(--orange);font-weight:700;text-decoration:underline;">全台 12 縣市均有教學據點</a>（台北、新北、基隆、桃園、新竹縣、新竹市、苗栗、台中、嘉義、台南、高雄、屏東），累計超過 10 萬名學生、500 位以上資深師資，學習時數超過五百萬小時。
             </div>
           </div>
 
@@ -2278,6 +2278,11 @@
     obs.observe(c);
   });
 })();
+
+/* ── 動態年資計算（2012 年創立） ── */
+document.querySelectorAll('.oa-years').forEach(el => {
+  el.textContent = new Date().getFullYear() - 2012;
+});
 
 /* ── Reviews Carousel (infinite loop) ── */
 (function(){
