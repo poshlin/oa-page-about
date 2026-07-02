@@ -71,6 +71,7 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
     :root {
       --orange: #FFA300;
@@ -244,15 +245,7 @@
       margin-bottom: 24px;
     }
 
-    .hero h2 {
-      font-size: clamp(34px, 5.5vw, 64px);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 em, .hero h2 em {
+    .hero h1 em {
       display: block;
       font-style: normal;
       font-size: 0.55em;
@@ -1369,11 +1362,12 @@
     <div class="container">
       <div class="hero-inner">
         <div class="hero-text">
-          <h1 class="hero-label">橘子蘋果程式學苑 <strong>&lt;edu&gt;</strong> leaders <strong>&lt;/edu&gt;</strong></h1>
-          <h2>
+          <div class="hero-label"><strong>&lt;edu&gt;</strong> leaders <strong>&lt;/edu&gt;</strong></div>
+          <h1>
+            <span class="sr-only">橘子蘋果程式學苑：</span>
             <em>學會思考與創造</em>
             永遠跟得上時代
-          </h2>
+          </h1>
           <p class="hero-sub">
             人工智慧當道，工作持續減少的當下，<br>給孩子最好的武器，面對未來的挑戰。
           </p>
