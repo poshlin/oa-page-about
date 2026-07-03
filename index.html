@@ -1486,13 +1486,17 @@
       .teacher-left { padding: 60px 28px 24px; }
       .teacher-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
       .locations-inner { grid-template-columns: 1fr; }
-      .leader-row { grid-template-columns: 1fr; }
+      .leader-row,
+      .leader-row.reverse { grid-template-columns: 1fr; }
       .leader-row.reverse .leader-photo-wrap { order: 1; }
       .leader-row.reverse .leader-bio-wrap { order: 2; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-item:nth-child(2) { border-right: none; }
       .awards-grid { grid-template-columns: 1fr 1fr; }
       .faq-grid { grid-template-columns: 1fr; }
+      .faq-sticky { position: static; }
+      .media-logos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .media-logo { text-align: center; }
     }
 
     @media (max-width: 600px) {
