@@ -1554,8 +1554,8 @@
       <div class="intro-inner">
         <p>
           <strong class="oa-brand">橘子蘋果程式學苑</strong>成立於 <strong>2012 年</strong>，是台灣規模最大的兒童程式教育機構之一。<br>
-          提供從 <span class="intro-code">Scratch</span> 到 <span class="intro-code">AI</span> 的完整課程體系，服務遍及全台 <strong>12 個縣市</strong>，<br>
-          累計超過 <strong>10 萬名學生</strong>、<strong>500 位以上資深師資</strong>，兒童程式教育經驗逾 <strong><span class="oa-years"></span> 年</strong>。<br><br>
+          提供從 <span class="intro-code">Scratch</span> 到 <span class="intro-code">AI</span> 的完整課程體系，服務遍及全台 <strong><span class="count-num" data-target="12">12</span> 個縣市</strong>，<br>
+          累計超過 <strong><span class="count-num" data-target="10">10</span> 萬名學生</strong>、<strong><span class="count-num" data-target="500">500</span> 位以上資深師資</strong>，兒童程式教育經驗逾 <strong><span class="oa-years count-num" data-target="0">0</span> 年</strong>。<br><br>
           我們相信：程式教育的核心，不是學會一種語言，<br>
           而是學會一種思考方式——<strong class="oa-brand">用邏輯解決問題，用創造面向未來</strong>。
         </p>
@@ -2287,10 +2287,44 @@
   });
 })();
 
-/* ── 動態年資計算（2012 年創立） ── */
+/* ── 動態年資 + Count-up 動畫 ── */
+const yearsVal = new Date().getFullYear() - 2012;
 document.querySelectorAll('.oa-years').forEach(el => {
-  el.textContent = new Date().getFullYear() - 2012;
+  el.textContent = yearsVal;
+  if (el.classList.contains('count-num')) el.dataset.target = yearsVal;
 });
+
+(function(){
+  const els = document.querySelectorAll('.count-num');
+  if (!els.length) return;
+
+  function animateCount(el) {
+    const target = +el.dataset.target;
+    const duration = target >= 100 ? 1200 : 900;
+    const start = performance.now();
+    el.textContent = '0';
+
+    function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  els.forEach(el => obs.observe(el));
+})();
 
 /* ── Reviews Carousel (infinite loop) ── */
 (function(){
