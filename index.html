@@ -326,7 +326,7 @@
     .hero-badge {
       position: absolute;
       background: #fff;
-      border-radius: 18px;
+      border-radius: 16px;
       padding: 14px 20px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.28);
       z-index: 4;
@@ -508,7 +508,7 @@
 
     .story-visual {
       background: var(--orange);
-      border-radius: 20px;
+      border-radius: 16px;
       padding: 52px 44px;
       color: #fff;
       position: relative;
@@ -951,7 +951,7 @@
                   font-family: 'Noto Sans TC', sans-serif; font-size: 11px; color: #AAA; }
     .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; background: #FFA300; flex-shrink: 0; }
     .my-badge { display: inline-block; margin-top: 12px; padding: 5px 12px;
-                border: 1px solid var(--teal); border-radius: 20px; color: var(--teal);
+                border: 1px solid var(--teal); border-radius: 16px; color: var(--teal);
                 font-family: 'Noto Sans TC', sans-serif; font-size: 11px; text-decoration: none;
                 transition: background .2s, color .2s; }
     .my-badge:hover { background: var(--teal); color: #fff; }
@@ -1056,7 +1056,7 @@
 
     .tl-card {
       background: #fff;
-      border-radius: 10px;
+      border-radius: 16px;
       padding: 12px 16px;
       font-size: 13px;
       line-height: 1.6;
@@ -1158,7 +1158,7 @@
       height: 42px;
       background: rgba(201,168,76,0.12);
       border: 1px solid rgba(201,168,76,0.22);
-      border-radius: 10px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1394,7 +1394,7 @@
 
     .faq-item {
       background: #fff;
-      border-radius: 10px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
     }
@@ -1471,7 +1471,7 @@
 
     .cta-inner { position: relative; z-index: 2; }
 
-    .cta h2 { color: #fff; font-size: clamp(28px, 4.5vw, 46px); margin-bottom: 12px; }
+    .cta h2 { color: #1A1A1A; font-size: clamp(28px, 4.5vw, 46px); margin-bottom: 12px; }
     .cta p { color: #1A1A1A; font-size: 18px; margin-bottom: 40px; }
 
     .cta-contact {
@@ -1481,6 +1481,13 @@
       font-family: var(--mono);
     }
     .cta-contact a { color: #1A1A1A; text-decoration: underline; font-weight: 700; }
+    .cta-trust { color: #1A1A1A; font-family: var(--mono); font-size: 14px; margin-bottom: 24px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+    .btn-line { display: inline-block; background: transparent; color: #1A1A1A; border: 2px solid #1A1A1A; font-weight: 900; font-size: 16px; padding: 14px 32px; border-radius: 50px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
+    .btn-line:hover { background: #1A1A1A; color: var(--orange); }
+    .count-num { display: inline-block; }
+    .count-num.count-in { animation: countPop 0.5s ease both; }
+    @keyframes countPop { from { transform: scale(0.82); opacity: 0.4; } to { transform: scale(1); opacity: 1; } }
 
     /* ── FOOTER ── */
     .page-footer { background: var(--dark); padding: 36px 0; }
@@ -2077,11 +2084,13 @@
       <div class="cta-inner">
         <h2>一起點亮孩子的眼神</h2>
         <p>邀您來親身感受橘子蘋果的課堂</p>
-        <button type="button" class="btn-white" data-oa-cta="bottom">預約免費體驗課</button>
+        <p class="cta-trust">★ 4.9　·　2,200+ 位家長真實評價　·　諮詢不強迫報名</p>
+        <div class="cta-actions">
+          <button type="button" class="btn-white" data-oa-cta="bottom">預約免費體驗課</button>
+          <a href="https://line.me/R/ti/p/@291npklp" target="_blank" rel="noopener" class="btn-line">加入 LINE@ 諮詢</a>
+        </div>
         <div class="cta-contact">
-          // <a href="tel:+886277098229">(02) 7709-8229</a>
-          &nbsp;|&nbsp;
-          <a href="https://line.me/R/ti/p/@291npklp" target="_blank" rel="noopener">加入 LINE@ 諮詢</a>
+          // 線上、實體皆可預約　·　<a href="tel:+886277098229">(02) 7709-8229</a>
         </div>
       </div>
     </div>
@@ -2316,19 +2325,10 @@ document.querySelectorAll('.oa-years').forEach(el => {
   if (!els.length) return;
 
   function animateCount(el) {
-    const target = +el.dataset.target;
-    const duration = target >= 100 ? 1200 : 900;
-    const start = performance.now();
-    el.textContent = '0';
-
-    function step(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(ease * target);
-      if (p < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(step);
+    // 數字恆顯示正確目標值（HTML 已含），只做一次淡入 pop；
+    // 不再從 0 數上去——事實數字的任何中途值都是錯的（1→12 縣市每格都錯）
+    el.textContent = el.dataset.target;
+    el.classList.add('count-in');
   }
 
   const obs = new IntersectionObserver(entries => {
