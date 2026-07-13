@@ -1929,8 +1929,8 @@
             <div class="county-chip north" data-city="新北市">新北</div>
             <div class="county-chip north" data-city="基隆市">基隆</div>
             <div class="county-chip north" data-city="桃園市">桃園</div>
-            <div class="county-chip center" data-city="新竹縣">新竹縣</div>
-            <div class="county-chip center" data-city="新竹市">新竹市</div>
+            <div class="county-chip north" data-city="新竹縣">新竹縣</div>
+            <div class="county-chip north" data-city="新竹市">新竹市</div>
             <div class="county-chip center" data-city="苗栗縣">苗栗</div>
             <div class="county-chip center" data-city="台中市">台中</div>
             <div class="county-chip south" data-city="嘉義縣">嘉義</div>
@@ -2224,12 +2224,12 @@
       const geo = topojson.feature(topo, topo.objects.counties);
 
       // ── 顏色分區 ──
-      const NORTH   = new Set(['基隆市','台北市','新北市','桃園市']);
-      const CENTER  = new Set(['新竹市','新竹縣','苗栗縣','台中市']);
+      const NORTH   = new Set(['基隆市','台北市','新北市','桃園市','新竹市','新竹縣']);
+      const CENTER  = new Set(['苗栗縣','台中市']);
       const SOUTH   = new Set(['嘉義市','嘉義縣','台南市','高雄市','屏東縣']);
       const OA_ALL  = new Set([...NORTH,...CENTER,...SOUTH]);
       const OFFSHORE= new Set(['連江縣','金門縣','澎湖縣']);
-      const fillOf  = n => NORTH.has(n)?'#FFA300':CENTER.has(n)?'#00C4B3':SOUTH.has(n)?'#FF7A6E':'#F0F0F0';
+      const fillOf  = n => NORTH.has(n)?'#FFA300':CENTER.has(n)?'#00C4B3':SOUTH.has(n)?'#FF6F61':'#F0F0F0';
 
       // ── 哪些縣市要顯示標籤（key=縣市名，value=顯示文字）──
       // 面積大的用內部白字；面積小或重疊的用引導線
