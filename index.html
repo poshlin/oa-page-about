@@ -1503,6 +1503,16 @@
     .mid-cta { background: var(--light); padding: 46px 0; text-align: center; }
     .mid-cta-text { font-size: clamp(18px, 2.5vw, 24px); font-weight: 900; color: var(--text); margin-bottom: 20px; }
     @media (max-width: 720px) { .persona-cards { grid-template-columns: 1fr; } }
+    /* 雙師模式主敘事 */
+    .dual-teacher { background: #fff; padding: 72px 0; }
+    .dual-lead { font-size: 17px; line-height: 1.85; color: var(--text); max-width: 700px; margin: 12px 0 40px; }
+    .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .dual-col { padding: 28px; background: var(--light); border-radius: 16px; border: 1px solid var(--border); }
+    .dual-k { font-family: var(--mono); font-size: 13px; color: var(--orange); font-weight: 700; margin-bottom: 8px; }
+    .dual-col h3 { font-size: 20px; margin-bottom: 10px; color: var(--text); }
+    .dual-col p { font-size: 15px; line-height: 1.85; color: #444; }
+    .dual-note { font-family: var(--mono); font-size: 14px; color: #555; margin-top: 28px; }
+    @media (max-width: 720px) { .dual-grid { grid-template-columns: 1fr; } }
 
     /* ── FOOTER ── */
     .page-footer { background: var(--dark); padding: 36px 0; }
@@ -1846,6 +1856,27 @@
   </section>
 
   <!-- ══ LOCATIONS 全台據點 ══ -->
+  <section class="dual-teacher" id="dual-teacher" aria-label="雙師教學模式">
+    <div class="container">
+      <span class="tag">// dual_teacher</span>
+      <h2>一堂課，兩位老師</h2>
+      <p class="dual-lead">線上學程式，家長最怕「看影片沒人教」。橘子蘋果用<strong>影片講師＋真人輔導</strong>的雙師模式，把「聽得懂」和「做得出來」分開解決。</p>
+      <div class="dual-grid">
+        <div class="dual-col">
+          <div class="dual-k">// input：反覆聽懂</div>
+          <h3>影片講師</h3>
+          <p>由教學部講師錄製，可反覆觀看、依自己的速度快轉倒回——不怕聽一次不懂。等於每個孩子都有一位不會累、隨時能重播的老師。</p>
+        </div>
+        <div class="dual-col">
+          <div class="dual-k">// output：動手做出來</div>
+          <h3>真人輔導老師</h3>
+          <p>上課時真人老師在線，孩子按發問按鈕舉手，老師一對一引導除錯——不是直接給答案，而是引導孩子自己想通，練的是真正動手做、被追問的能力。</p>
+        </div>
+      </div>
+      <p class="dual-note">// 影片負責把觀念反覆講清楚，真人負責把卡住的洞補起來——這是團班一位老師顧整班補不了的。</p>
+    </div>
+  </section>
+
   <section class="mid-cta" aria-label="預約體驗">
     <div class="container">
       <p class="mid-cta-text">看完師資怎麼把關，來親身體驗一堂課</p>
