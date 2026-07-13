@@ -23,7 +23,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -141,14 +141,14 @@
     .tag-light { background: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
     .tag-dark { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
 
-    h2 { font-weight: 900; line-height: 1.2; font-size: clamp(30px, 4.5vw, 48px); }
-    h3 { font-weight: 900; line-height: 1.3; font-size: clamp(20px, 2.5vw, 26px); }
+    h2 { font-weight: 800; line-height: 1.2; font-size: clamp(30px, 4.5vw, 48px); }
+    h3 { font-weight: 800; line-height: 1.3; font-size: clamp(20px, 2.5vw, 26px); }
 
     .btn-primary {
       display: inline-block;
       background: var(--orange);
       color: #1A1A1A;
-      font-weight: 900;
+      font-weight: 800;
       font-size: 16px;
       padding: 15px 36px;
       border-radius: 6px;
@@ -162,7 +162,7 @@
       display: inline-block;
       background: #fff;
       color: #1A1A1A;
-      font-weight: 900;
+      font-weight: 800;
       font-size: 18px;
       padding: 18px 48px;
       border-radius: 50px;
@@ -187,6 +187,14 @@
     }
     .btn-outline:hover { background: currentColor; }
     .btn-outline:hover span { color: white; }
+    .btn-classroom { background: var(--orange); border-color: var(--orange); }
+    .btn-classroom span { color: #1A1A1A; }
+    .btn-classroom:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
+    .btn-classroom:hover span { color: #1A1A1A; }
+    .btn-online { background: var(--teal); border-color: var(--teal); }
+    .btn-online span { color: #1A1A1A; }
+    .btn-online:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
+    .btn-online:hover span { color: #1A1A1A; }
 
     /* ── CODE BACKGROUND DECORATION ── */
     .code-bg {
@@ -262,7 +270,7 @@
 
     .hero h1 {
       font-size: clamp(34px, 5.5vw, 64px);
-      font-weight: 900;
+      font-weight: 800;
       color: #fff;
       line-height: 1.15;
       margin-bottom: 24px;
@@ -347,7 +355,7 @@
     .hero-badge-num {
       display: block;
       font-size: 24px;
-      font-weight: 900;
+      font-weight: 800;
       color: var(--orange);
       font-family: var(--mono);
       line-height: 1;
@@ -397,7 +405,7 @@
       color: #333;
     }
 
-    .intro strong { color: var(--teal-dark); font-weight: 900; }
+    .intro strong { color: var(--teal-dark); font-weight: 800; }
     .intro strong.oa-brand { color: var(--orange); }
 
     .intro-code {
@@ -444,7 +452,7 @@
 
     .stat-number {
       font-size: clamp(48px, 6vw, 72px);
-      font-weight: 900;
+      font-weight: 800;
       color: var(--orange);
       line-height: 1;
       margin-bottom: 10px;
@@ -519,7 +527,7 @@
       position: absolute;
       top: -20px; left: -10px;
       font-size: 140px;
-      font-weight: 900;
+      font-weight: 800;
       color: rgba(255,255,255,0.08);
       line-height: 1;
       font-family: var(--mono);
@@ -595,7 +603,7 @@
 
     .quote-text {
       font-size: clamp(24px, 4vw, 44px);
-      font-weight: 900;
+      font-weight: 800;
       color: #1A1A1A;
       line-height: 1.4;
       letter-spacing: 0.01em;
@@ -701,7 +709,7 @@
 
     .leader-name {
       font-size: clamp(32px, 4vw, 48px);
-      font-weight: 900;
+      font-weight: 800;
       color: var(--text);
       letter-spacing: -0.02em;
       line-height: 1;
@@ -847,7 +855,7 @@
 
     .teacher-headline {
       font-size: clamp(22px, 3vw, 30px);
-      font-weight: 900;
+      font-weight: 800;
       color: #fff;
       line-height: 1.4;
     }
@@ -880,7 +888,7 @@
 
     .step-title {
       font-size: 16px;
-      font-weight: 900;
+      font-weight: 800;
       color: #fff;
       margin-bottom: 2px;
     }
@@ -932,7 +940,7 @@
        SECTION 8: LOCATIONS
     ══════════════════════════════════ */
     .locations {
-      background: #fff;
+      background: linear-gradient(170deg, #FFF3E0 0%, #FFFBF6 58%, #FFFFFF 100%);
       padding: 120px 0 96px;
       position: relative;
       z-index: 1;
@@ -980,9 +988,9 @@
       font-weight: 700;
     }
 
-    .county-chip.north { background: #FFF3E0; color: var(--orange); }
-    .county-chip.center { background: #E0FBF8; color: #00706A; }
-    .county-chip.south { background: #FFF0F0; color: #B02A24; }
+    .county-chip.north  { background: #FBE6C2; color: #2D2E32; border: 1px solid #F2D49E; }
+    .county-chip.center { background: #CFEEE2; color: #2D2E32; border: 1px solid #ACE0D0; }
+    .county-chip.south  { background: #FADBD1; color: #2D2E32; border: 1px solid #F1C6B8; }
 
     .loc-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -1173,7 +1181,7 @@
     .award-text strong {
       display: block;
       font-size: 14px;
-      font-weight: 900;
+      font-weight: 800;
       color: #F0E2B0;
       margin-bottom: 6px;
       line-height: 1.4;
@@ -1483,7 +1491,7 @@
     .cta-contact a { color: #1A1A1A; text-decoration: underline; font-weight: 700; }
     .cta-trust { color: #1A1A1A; font-family: var(--mono); font-size: 14px; margin-bottom: 24px; }
     .cta-actions { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
-    .btn-line { display: inline-block; background: transparent; color: #1A1A1A; border: 2px solid #1A1A1A; font-weight: 900; font-size: 16px; padding: 14px 32px; border-radius: 50px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
+    .btn-line { display: inline-block; background: transparent; color: #1A1A1A; border: 2px solid #1A1A1A; font-weight: 800; font-size: 16px; padding: 14px 32px; border-radius: 50px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
     .btn-line:hover { background: #1A1A1A; color: var(--orange); }
     .count-num { display: inline-block; }
     .count-num.count-in { animation: countPop 0.5s ease both; }
@@ -1501,7 +1509,7 @@
     .quick-links a:hover { opacity: 1; color: var(--orange); }
     /* 中段 CTA */
     .mid-cta { background: var(--light); padding: 46px 0; text-align: center; }
-    .mid-cta-text { font-size: clamp(18px, 2.5vw, 24px); font-weight: 900; color: var(--text); margin-bottom: 20px; }
+    .mid-cta-text { font-size: clamp(18px, 2.5vw, 24px); font-weight: 800; color: var(--text); margin-bottom: 20px; }
     @media (max-width: 720px) { .persona-cards { grid-template-columns: 1fr; } }
     /* 雙師模式主敘事 */
     .dual-teacher { background: #fff; padding: 72px 0; }
@@ -1513,6 +1521,9 @@
     .dual-col p { font-size: 15px; line-height: 1.85; color: #444; }
     .dual-note { font-family: var(--mono); font-size: 14px; color: #555; margin-top: 28px; }
     @media (max-width: 720px) { .dual-grid { grid-template-columns: 1fr; } }
+    /* 記憶點 hook */
+    .story-hook { font-size: 16px; line-height: 1.7; color: var(--text); margin-top: 18px; }
+    .cta-hook { font-family: var(--mono); font-size: 14px; color: #1A1A1A; letter-spacing: 0.12em; margin-bottom: 10px; font-weight: 700; }
 
     /* ── FOOTER ── */
     .page-footer { background: var(--dark); padding: 36px 0; }
@@ -1576,7 +1587,7 @@
           <p class="hero-sub">
             人工智慧當道，工作持續減少的當下，<br>給孩子最好的武器，面對未來的挑戰。
           </p>
-          <a href="https://orangeapple.co/courses" class="btn-primary" style="background:#fff; color:#1A1A1A; border:2px solid #fff; border-radius:50px; padding:14px 40px; font-weight:900; letter-spacing:0.06em; transition:background 0.22s,color 0.22s,box-shadow 0.22s;" onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#1A1A1A';">
+          <a href="https://orangeapple.co/courses" class="btn-primary" style="background:#fff; color:#1A1A1A; border:2px solid #fff; border-radius:50px; padding:14px 40px; font-weight:800; letter-spacing:0.06em; transition:background 0.22s,color 0.22s,box-shadow 0.22s;" onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='#1A1A1A';">
             探索課程 →
           </a>
         </div>
@@ -1691,6 +1702,7 @@
           <p>
             四千多個日子過去了，從數萬名學生的笑臉中，我們看見他們提升了自信、更勇於創造，同時掌握了這個時代最重要的科技運用能力。
           </p>
+          <p class="story-hook">而我們始終相信——<strong>英雄，出少年</strong>。</p>
         </div>
         <div class="story-visual">
           <div class="story-year-bg">2012</div>
@@ -1923,10 +1935,10 @@
             <div class="county-chip south" data-city="屏東縣">屏東</div>
           </div>
           <div class="loc-actions">
-            <a href="https://orangeapple.co/classroom" class="btn-outline">
+            <a href="https://orangeapple.co/classroom" class="btn-outline btn-classroom">
               <span>查詢附近教室</span>
             </a>
-            <a href="https://orangeapple.co/courses" class="btn-outline" style="color:var(--teal-dark);">
+            <a href="https://orangeapple.co/campaigns/online" class="btn-outline btn-online">
               <span>線上課程</span>
             </a>
           </div>
@@ -2163,6 +2175,7 @@
     </div>
     <div class="container">
       <div class="cta-inner">
+        <p class="cta-hook">// 英雄，出少年</p>
         <h2>一起點亮孩子的眼神</h2>
         <p>邀您來親身感受橘子蘋果的課堂</p>
         <p class="cta-trust">★ 4.9　·　2,200+ 位家長真實評價　·　諮詢不強迫報名</p>
