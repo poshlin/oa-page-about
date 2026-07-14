@@ -1496,6 +1496,8 @@
     .cta-contact a { color: #2D2E32; text-decoration: underline; font-weight: 700; }
     .cta-trust { color: #2D2E32; font-family: var(--mono); font-size: 14px; margin-bottom: 24px; }
     .cta-actions { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+    /* hero 內文靠左，按鈕跟著靠左（中段/結尾維持置中） */
+    .hero .cta-actions { justify-content: flex-start; margin-top: 8px; }
     .btn-line { display: inline-block; background: transparent; color: #2D2E32; border: 2px solid #2D2E32; font-weight: 800; font-size: 16px; padding: 15px 38px; border-radius: 50px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
     .btn-line:hover { background: #2D2E32; color: var(--orange); }
     /* 三個 CTA 類統一 line-height，讓 <button> 與 <a> 配對等高 */
