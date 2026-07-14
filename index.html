@@ -112,6 +112,9 @@
       *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
     }
 
+    html { font-size: 18px; }
+    @media (max-width: 768px) { html { font-size: 17px; } }
+
     body {
       font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
       color: var(--text);
@@ -291,7 +294,7 @@
 
     .hero-sub {
       color: #2D2E32;
-      font-size: 17px;
+      font-size: 19px;
       max-width: 420px;
       margin-bottom: 40px;
       line-height: 1.8;
