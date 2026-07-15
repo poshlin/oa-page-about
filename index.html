@@ -1607,6 +1607,65 @@
       .faq-sticky p { font-size: 16px !important; }
       .dual-lead { font-size: 17px; }
     }
+
+    /* ══ Classroom／FAQ 字級系統全面對齊（第二階段） ══ */
+    main p,
+    main li { font-size: 17px; line-height: 1.8; }
+    main h2 { font-size: clamp(32px, 4vw, 44px); line-height: 1.2; }
+    main h3 { font-size: 21px; line-height: 1.4; }
+    main button,
+    main .btn-primary,
+    main .btn-secondary,
+    main .btn-line { font-size: 16px; }
+
+    /* 只有程式風格標籤、日期、資料來源與真正註解維持次要層級 */
+    .tag,
+    .hero-code,
+    .persona-k,
+    .dual-k,
+    .dual-note,
+    .dual-fineprint,
+    .cta-hook,
+    .cta-trust,
+    .review-date,
+    .review-name,
+    .page-footer p { font-size: 15px; line-height: 1.7; }
+
+    .intro p,
+    .story-text p,
+    .story-visual p,
+    .leader-bio,
+    .leader-edu li,
+    .loc-desc,
+    .dual-col p,
+    .review-text,
+    .reviews-subtitle,
+    .faq-sticky p,
+    .faq-answer p,
+    .persona-sub { font-size: 17px; }
+    .faq-sticky p { font-size: 17px !important; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: clamp(42px, 11vw, 48px); line-height: 1.18; }
+      main h2 { font-size: clamp(32px, 8.5vw, 38px); }
+      main h3 { font-size: 21px; }
+      main p,
+      main li { font-size: 17px; line-height: 1.8; }
+      .intro p,
+      .story-hook,
+      .leader-bio,
+      .loc-desc,
+      .dual-col p,
+      .review-text,
+      .reviews-subtitle,
+      .faq-more,
+      .persona-sub,
+      .story-visual p,
+      .leader-edu li,
+      .faq-sticky p { font-size: 17px !important; }
+      .dual-fineprint,
+      .review-date { font-size: 15px; }
+    }
   </style>
 </head>
 <body>
