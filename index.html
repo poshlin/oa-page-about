@@ -1569,6 +1569,44 @@
       .funnel-wrap { padding: 40px 24px; }
       .funnel-row { grid-template-columns: 60px 1fr 38px; gap: 8px; }
     }
+
+    /* ══ 閱讀字級優化（第一階段）：放大主要敘事，標籤與真正註解維持次要層級 ══ */
+    .intro p,
+    .story-hook,
+    .leader-bio,
+    .loc-desc,
+    .dual-col p,
+    .review-text,
+    .reviews-subtitle,
+    .faq-more,
+    .persona-sub,
+    .story-visual p,
+    .leader-edu li,
+    .faq-sticky p {
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    .dual-lead { font-size: 18px; }
+    .persona-card strong { font-size: 20px; }
+    .dual-col h3 { font-size: 22px; }
+    .dual-fineprint { font-size: 14px; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: clamp(38px, 10vw, 48px); }
+      .intro p,
+      .story-hook,
+      .leader-bio,
+      .loc-desc,
+      .dual-col p,
+      .review-text,
+      .reviews-subtitle,
+      .faq-more,
+      .persona-sub,
+      .story-visual p,
+      .leader-edu li,
+      .faq-sticky p { font-size: 16px !important; }
+      .dual-lead { font-size: 17px; }
+    }
   </style>
 </head>
 <body>
